@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vue.js 基礎</title>
+</head>
+<body>
+
+    <div class="nav-bar"></div>
+
+    <div id="app">
+        <div class="product">
+
+            <div class="product-image">
+                <img v-bind:src="image" v-bind:alt="altText">
+            </div>
+
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+                <!-- 条件分岐による表示切替 -->
+                <!-- <p v-if="inventory > 10">In Stock</p>
+                <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+                <p v-else>Out of Stock</p> -->
+
+                <!-- 表示をjsで切替 -->
+                <!-- <p v-show="inStock">On Sale!</p> -->
+
+                <!-- Charenge 在庫がないのにセール表示はおかしいから、在庫がある時だけ表示されるようにした -->
+                <p v-if="inStock">In Stock <span v-if=" onSale" style="display: inline-block; padding: 2px 10px; color: #fff;font-weight: bold; background-color: #f00;">On Sale!</span></p>
+                <p v-else style="color: #999;">SORRY😔, Out of Stock</p>
+                
+            </div>
+
+        </div>        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
